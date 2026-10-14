@@ -559,6 +559,14 @@ void display(void)
   glutSwapBuffers();
 }
 
+void keyboard(unsigned char key,int,int)
+{
+  if(key=='1')menu(1);
+  else if(key=='2')menu(2);
+  else if(key=='3')menu(3);
+  else if(key==27 || key=='q')menu(4);
+}
+
 void create_menu(void)
 {
   glutCreateMenu(menu);
@@ -576,13 +584,15 @@ int main(int argc,char **argv)
 
   glutInitWindowPosition(0,0);
   glutInitWindowSize(800,800);
-  glutCreateWindow("CED18I049-ICG PROJECT");
+  glutCreateWindow("Interactive Aquarium — OpenGL");
 
   myinit();
   create_menu();
   glutIdleFunc(idle);
+  glutKeyboardFunc(keyboard);
 
   glutDisplayFunc(display);
 
   glutMainLoop();
 }
+
